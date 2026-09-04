@@ -3,8 +3,8 @@
   "short_name": "ID English",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f6f7f9",
-  "theme_color": "#111827",
+  "background_color": "#f5f8fc",
+  "theme_color": "#eaf4ff",
   "icons": [
     {
       "src": "icon-192.png",
