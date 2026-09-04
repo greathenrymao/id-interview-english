@@ -1,0 +1,642 @@
+[
+  {
+    "day": 21,
+    "title": "Talking About Your Design",
+    "theme_zh": "說明你的設計",
+    "vocab": [
+      [
+        "improve",
+        "改善",
+        "make something better",
+        "We changed the shape to improve the user experience."
+      ],
+      [
+        "issue",
+        "問題",
+        "a problem that needs attention",
+        "We found this issue during prototype testing."
+      ],
+      [
+        "compare",
+        "比較",
+        "look at two or more things to find differences",
+        "We compared our design with three competitors."
+      ],
+      [
+        "reduce",
+        "減少",
+        "make something smaller or lower",
+        "We changed the structure to reduce the weight."
+      ],
+      [
+        "balance",
+        "平衡",
+        "find a good middle point between different needs",
+        "We need to balance design, cost, and performance."
+      ]
+    ],
+    "phrases": [
+      [
+        "Based on our research…",
+        "根據我們的研究…",
+        "Based on our research, users want a lighter laptop."
+      ],
+      [
+        "The main reason is…",
+        "最主要的原因是…",
+        "The main reason is to improve the user experience."
+      ],
+      [
+        "I worked closely with…",
+        "我和…密切合作",
+        "I worked closely with the mechanical engineering team."
+      ]
+    ],
+    "question": "Why did you choose this design?",
+    "structure": [
+      "The main goal was to…",
+      "Based on our research…",
+      "We found that…",
+      "So I decided to…",
+      "This helped us…"
+    ],
+    "model": "The main goal was to make the laptop look thinner and cleaner. Based on our research, users wanted a simple design that was easy to carry. We compared several competitor products. So I decided to simplify the rear design. This helped us create a cleaner and more modern product.",
+    "shadow": "We need to balance design, cost, and performance."
+  },
+  {
+    "day": 22,
+    "title": "Working With Engineering",
+    "theme_zh": "與工程團隊合作",
+    "vocab": [
+      [
+        "space",
+        "空間",
+        "room available inside a product",
+        "We needed more space for the cooling system."
+      ],
+      [
+        "change",
+        "修改",
+        "make something different",
+        "We made a small change to the rear cover."
+      ],
+      [
+        "test",
+        "測試",
+        "check if something works well",
+        "We tested three different structures."
+      ],
+      [
+        "strong",
+        "堅固的",
+        "able to resist force",
+        "The new frame is stronger than the old one."
+      ],
+      [
+        "solution",
+        "解決方案",
+        "a way to solve a problem",
+        "We found a simple solution with the ME team."
+      ]
+    ],
+    "phrases": [
+      [
+        "I understand the issue.",
+        "我了解這個問題。",
+        "I understand the issue. Let’s check the possible options."
+      ],
+      [
+        "We tested several options.",
+        "我們測試了幾個方案。",
+        "We tested several options before making the final decision."
+      ],
+      [
+        "This was the best balance.",
+        "這是最好的平衡。",
+        "This was the best balance between design and engineering."
+      ]
+    ],
+    "question": "How do you work with engineers when they ask you to change your design?",
+    "structure": [
+      "First, I try to understand…",
+      "Then I work with…",
+      "We explore…",
+      "We compare…",
+      "Finally, we choose…"
+    ],
+    "model": "First, I try to understand the engineering issue. Then I work with the ME team to explore several options. We compare the impact on design, cost, and performance. Finally, we choose the option with the best balance. I try to keep the original design intent as much as possible.",
+    "shadow": "We tested several options before making the final decision."
+  },
+  {
+    "day": 23,
+    "title": "Production Handoff",
+    "theme_zh": "量產交接",
+    "vocab": [
+      [
+        "sample",
+        "樣品",
+        "a product used for checking quality",
+        "We checked the first production sample."
+      ],
+      [
+        "gap",
+        "間隙",
+        "a small space between two parts",
+        "The gap was larger than the golden sample."
+      ],
+      [
+        "quality",
+        "品質",
+        "how good a product is",
+        "Cosmetic quality is important for a premium product."
+      ],
+      [
+        "check",
+        "確認",
+        "look carefully to make sure something is correct",
+        "We checked the color and surface finish."
+      ],
+      [
+        "approve",
+        "核准",
+        "officially accept something",
+        "I approved the sample after the final review."
+      ]
+    ],
+    "phrases": [
+      [
+        "Compared with the golden sample…",
+        "和 Golden Sample 相比…",
+        "Compared with the golden sample, the gap is too visible."
+      ],
+      [
+        "I would like to check…",
+        "我想先確認…",
+        "I would like to check more production samples."
+      ],
+      [
+        "Before mass production…",
+        "在量產之前…",
+        "Before mass production, we need to confirm the cosmetic quality."
+      ]
+    ],
+    "question": "What do you check before approving a production sample?",
+    "structure": [
+      "First, I compare…",
+      "I check…",
+      "If I find an issue…",
+      "I work with…",
+      "I approve when…"
+    ],
+    "model": "First, I compare the sample with the approved golden sample. I check the color, texture, gap, flush, and surface quality. If I find an issue, I work with the supplier and engineering team to find the cause. I also check more samples to make sure the quality is stable. I approve the product only when the result meets our design target.",
+    "shadow": "Before mass production, we need to confirm the cosmetic quality."
+  },
+  {
+    "day": 24,
+    "title": "Competitor Analysis",
+    "theme_zh": "競品分析",
+    "vocab": [
+      [
+        "benchmark",
+        "競品基準",
+        "compare products to learn what works well",
+        "We benchmarked four premium laptops."
+      ],
+      [
+        "feature",
+        "特徵",
+        "an important part or function",
+        "This feature makes the product easier to use."
+      ],
+      [
+        "detail",
+        "細節",
+        "a small part of a design",
+        "We studied the hinge detail carefully."
+      ],
+      [
+        "different",
+        "不同的",
+        "not the same",
+        "Our solution should feel different from the competitor."
+      ],
+      [
+        "insight",
+        "洞察",
+        "a useful understanding from research",
+        "The study gave us a useful design insight."
+      ]
+    ],
+    "phrases": [
+      [
+        "What we learned was…",
+        "我們學到的是…",
+        "What we learned was that users notice the rear profile first."
+      ],
+      [
+        "Instead of copying…",
+        "不是直接複製…",
+        "Instead of copying the form, we used the same design principle."
+      ],
+      [
+        "Our opportunity is…",
+        "我們的機會點是…",
+        "Our opportunity is to make the product feel lighter and cleaner."
+      ]
+    ],
+    "question": "What did you learn from competitor products?",
+    "structure": [
+      "We compared…",
+      "We noticed…",
+      "The main insight was…",
+      "Instead of copying…",
+      "Our opportunity was…"
+    ],
+    "model": "We compared several competitor laptops. We noticed that many of them used large rear vents for cooling. The main insight was that thermal performance often makes the product look heavier. Instead of copying their form, we looked for a cleaner solution. Our opportunity was to keep strong cooling performance with a lighter visual feel.",
+    "shadow": "Instead of copying the form, we used the same design principle."
+  },
+  {
+    "day": 25,
+    "title": "Material Selection",
+    "theme_zh": "材料選擇",
+    "vocab": [
+      [
+        "material",
+        "材料",
+        "what a product is made from",
+        "We compared aluminum and plastic for the top cover."
+      ],
+      [
+        "weight",
+        "重量",
+        "how heavy something is",
+        "The new material reduced the weight."
+      ],
+      [
+        "cost",
+        "成本",
+        "the money needed to make something",
+        "We needed to control the manufacturing cost."
+      ],
+      [
+        "finish",
+        "表面處理",
+        "the final surface look and feel",
+        "The matte finish feels more premium."
+      ],
+      [
+        "durable",
+        "耐用的",
+        "able to last a long time",
+        "The material needs to be durable for daily use."
+      ]
+    ],
+    "phrases": [
+      [
+        "From a design point of view…",
+        "從設計角度來看…",
+        "From a design point of view, aluminum gives a more premium feel."
+      ],
+      [
+        "The trade-off is…",
+        "取捨是…",
+        "The trade-off is higher cost and lower weight."
+      ],
+      [
+        "I would evaluate…",
+        "我會評估…",
+        "I would evaluate cost, weight, strength, and user perception."
+      ]
+    ],
+    "question": "Why did you choose aluminum instead of plastic?",
+    "structure": [
+      "The main reason was…",
+      "It gives us…",
+      "The trade-off is…",
+      "We also considered…",
+      "In the end…"
+    ],
+    "model": "The main reason was product positioning. Aluminum gives the product a more premium feel and better stiffness. The trade-off is higher cost. We also considered weight, surface quality, and durability. In the end, we chose aluminum because it supported the user experience and brand image.",
+    "shadow": "I would evaluate cost, weight, strength, and user perception."
+  },
+  {
+    "day": 26,
+    "title": "3D Development",
+    "theme_zh": "3D 開發",
+    "vocab": [
+      [
+        "clearance",
+        "間距",
+        "space needed between parts",
+        "We needed more clearance for the internal cable."
+      ],
+      [
+        "surface",
+        "曲面",
+        "the outside shape of a product",
+        "I refined the surface around the rear corner."
+      ],
+      [
+        "structure",
+        "結構",
+        "the internal support of a product",
+        "The structure needed more support near the hinge."
+      ],
+      [
+        "adjust",
+        "調整",
+        "make a small change",
+        "We adjusted the surface by one millimeter."
+      ],
+      [
+        "review",
+        "評審",
+        "a meeting to check and discuss work",
+        "We reviewed the CAD with the ME team."
+      ]
+    ],
+    "phrases": [
+      [
+        "Before changing the surface…",
+        "在修改外觀曲面之前…",
+        "Before changing the surface, I wanted to understand the issue."
+      ],
+      [
+        "Can we explore another option?",
+        "我們可以探索另一個方案嗎？",
+        "Can we explore another option with less visual impact?"
+      ],
+      [
+        "Keep the design intent.",
+        "保留設計意圖",
+        "We changed the structure but kept the design intent."
+      ]
+    ],
+    "question": "What do you do when ME asks you to change the exterior surface?",
+    "structure": [
+      "First, I ask…",
+      "I want to understand…",
+      "Then we explore…",
+      "We compare…",
+      "I choose…"
+    ],
+    "model": "First, I ask why the change is needed. I want to understand the exact clearance or structure issue. Then we explore several options together. We compare the impact on the exterior design and engineering performance. I choose the solution that solves the problem while keeping the design intent.",
+    "shadow": "We changed the structure but kept the design intent."
+  },
+  {
+    "day": 27,
+    "title": "Design Review",
+    "theme_zh": "設計評審",
+    "vocab": [
+      [
+        "decision",
+        "決策",
+        "a choice made after thinking",
+        "I explained the design decision to the team."
+      ],
+      [
+        "reason",
+        "原因",
+        "why something happens or is chosen",
+        "The main reason was better usability."
+      ],
+      [
+        "feedback",
+        "回饋",
+        "comments that help improve work",
+        "We received useful feedback from the PM team."
+      ],
+      [
+        "priority",
+        "優先順序",
+        "what is most important",
+        "User comfort was our first priority."
+      ],
+      [
+        "agree",
+        "同意",
+        "have the same opinion",
+        "The team agreed on the final direction."
+      ]
+    ],
+    "phrases": [
+      [
+        "Let me explain the reason.",
+        "讓我說明原因。",
+        "Let me explain the reason behind this design direction."
+      ],
+      [
+        "My main concern is…",
+        "我最在意的是…",
+        "My main concern is the visual thickness."
+      ],
+      [
+        "I recommend this option because…",
+        "我建議這個方案，因為…",
+        "I recommend this option because it gives the best overall balance."
+      ]
+    ],
+    "question": "How do you defend a design decision in a review?",
+    "structure": [
+      "I start with…",
+      "Then I show…",
+      "I explain…",
+      "I listen to…",
+      "Finally, I recommend…"
+    ],
+    "model": "I start with the user need and product goal. Then I show research, competitor examples, and prototype results. I explain the reason behind the design decision in simple terms. I also listen to engineering and PM feedback. Finally, I recommend the option that gives the best overall balance.",
+    "shadow": "I recommend this option because it gives the best overall balance."
+  },
+  {
+    "day": 28,
+    "title": "Cost Reduction",
+    "theme_zh": "成本優化",
+    "vocab": [
+      [
+        "save",
+        "節省",
+        "use less money, time, or material",
+        "This change can save manufacturing cost."
+      ],
+      [
+        "simplify",
+        "簡化",
+        "make something easier or less complex",
+        "We simplified the geometry to reduce machining time."
+      ],
+      [
+        "impact",
+        "影響",
+        "the effect of a change",
+        "We checked the impact on user experience."
+      ],
+      [
+        "value",
+        "價值",
+        "how useful or important something is",
+        "This detail adds visual value to the product."
+      ],
+      [
+        "option",
+        "方案",
+        "one possible choice",
+        "We prepared three cost-down options."
+      ]
+    ],
+    "phrases": [
+      [
+        "Can we reduce cost without…",
+        "我們能否在不影響…的情況下降低成本",
+        "Can we reduce cost without hurting the user experience?"
+      ],
+      [
+        "This detail adds value because…",
+        "這個細節有價值，因為…",
+        "This detail adds value because users touch it every day."
+      ],
+      [
+        "I would not change it unless…",
+        "除非…否則我不會修改",
+        "I would not change it unless we can keep the same quality."
+      ]
+    ],
+    "question": "How do you respond to a cost reduction request?",
+    "structure": [
+      "First, I understand…",
+      "Then I identify…",
+      "I protect…",
+      "I explore…",
+      "I recommend…"
+    ],
+    "model": "First, I understand the cost target. Then I identify which parts have the biggest cost impact. I protect the user-facing details that are important to quality and brand value. I explore simpler geometry, materials, or processes. I recommend the option that saves cost with the least impact on user experience.",
+    "shadow": "Can we reduce cost without hurting the user experience?"
+  },
+  {
+    "day": 29,
+    "title": "User-Centered Design",
+    "theme_zh": "以使用者為中心的設計",
+    "vocab": [
+      [
+        "user",
+        "使用者",
+        "the person who uses the product",
+        "We talked with users before starting the design."
+      ],
+      [
+        "need",
+        "需求",
+        "something a user requires",
+        "The main user need was better portability."
+      ],
+      [
+        "comfort",
+        "舒適度",
+        "how comfortable something feels",
+        "We improved the grip for better comfort."
+      ],
+      [
+        "easy",
+        "容易的",
+        "not difficult to use",
+        "The control should be easy to understand."
+      ],
+      [
+        "experience",
+        "體驗",
+        "how a person feels when using a product",
+        "We wanted to improve the overall user experience."
+      ]
+    ],
+    "phrases": [
+      [
+        "Users told us…",
+        "使用者告訴我們…",
+        "Users told us the product felt too heavy."
+      ],
+      [
+        "The key user need was…",
+        "關鍵使用者需求是…",
+        "The key user need was easy portability."
+      ],
+      [
+        "This helps users…",
+        "這能幫助使用者…",
+        "This helps users carry the product more comfortably."
+      ]
+    ],
+    "question": "How do you use user research in your design process?",
+    "structure": [
+      "We talked with…",
+      "We learned…",
+      "The key need was…",
+      "So I designed…",
+      "This helped…"
+    ],
+    "model": "We talked with users and studied how they used the product. We learned that weight and portability were important. The key need was easier daily carry. So I reduced unnecessary volume and improved the grip area. This helped users feel more comfortable and confident with the product.",
+    "shadow": "The key user need was easy portability."
+  },
+  {
+    "day": 30,
+    "title": "Project Storytelling",
+    "theme_zh": "作品集與專案故事",
+    "vocab": [
+      [
+        "goal",
+        "目標",
+        "what you want to achieve",
+        "The goal was to create a premium gaming laptop."
+      ],
+      [
+        "challenge",
+        "挑戰",
+        "a difficult problem",
+        "The biggest challenge was thermal packaging."
+      ],
+      [
+        "process",
+        "流程",
+        "the steps used to do work",
+        "I followed a clear design process."
+      ],
+      [
+        "result",
+        "成果",
+        "what happened in the end",
+        "The result was a cleaner and lighter product."
+      ],
+      [
+        "learn",
+        "學到",
+        "gain knowledge from experience",
+        "I learned how to work better with engineering."
+      ]
+    ],
+    "phrases": [
+      [
+        "The goal of this project was…",
+        "這個專案的目標是…",
+        "The goal of this project was to improve portability."
+      ],
+      [
+        "The biggest challenge was…",
+        "最大的挑戰是…",
+        "The biggest challenge was limited internal space."
+      ],
+      [
+        "In the end…",
+        "最後…",
+        "In the end, we delivered the project on time."
+      ]
+    ],
+    "question": "Can you walk me through one of your projects?",
+    "structure": [
+      "The goal was…",
+      "The challenge was…",
+      "My role was…",
+      "I worked with…",
+      "In the end…"
+    ],
+    "model": "The goal of this project was to create a thinner and cleaner gaming laptop. The biggest challenge was limited space for cooling. My role was to lead the industrial design and keep the visual direction consistent. I worked closely with ME, thermal, PM, and suppliers. In the end, we delivered a design that balanced performance, cost, and user experience.",
+    "shadow": "The biggest challenge was limited internal space."
+  }
+]
