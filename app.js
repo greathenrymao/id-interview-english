@@ -70,9 +70,9 @@ function render(){
           <div class="example">“${v[3]}”</div>
         </div>
         <div class="actions">
-          <button data-word="${i}">🔊 Word</button>
-          <button data-sentence="${i}">🔊 Sentence</button>
-          <button data-done-word="${i}" class="${d.words.includes(i)?"done":""}">✓</button>
+          <button data-word="${i}">Word audio</button>
+          <button data-sentence="${i}">Sentence</button>
+          <button data-done-word="${i}" class="${d.words.includes(i)?"done":""}">${d.words.includes(i)?"Done":"Mark"}</button>
         </div>
       </div>
     </div>`).join("");
@@ -84,8 +84,8 @@ function render(){
           <div class="example">“${p[2]}”</div>
         </div>
         <div class="actions">
-          <button data-phrase-audio="${i}">🔊 Example</button>
-          <button data-done-phrase="${i}" class="${d.phrases.includes(i)?"done":""}">✓</button>
+          <button data-phrase-audio="${i}">Example audio</button>
+          <button data-done-phrase="${i}" class="${d.phrases.includes(i)?"done":""}">${d.phrases.includes(i)?"Done":"Mark"}</button>
         </div>
       </div>
     </div>`).join("");
@@ -152,7 +152,7 @@ $$(".tab").forEach(b=>b.onclick=()=>activateTab(b.dataset.tab));
 $("#shadowPlay").onclick=()=>speak(lesson().shadow,.88);
 $("#shadowSlow").onclick=()=>speak(lesson().shadow,.68);
 $("#shadowDone").onclick=()=>{
-  const s=getStore(),k=String(lesson().day);s.completed[k].shadow=true;setStore(s);updateProgress();renderStats();toast("Shadowing completed ✓")
+  const s=getStore(),k=String(lesson().day);s.completed[k].shadow=true;setStore(s);updateProgress();renderStats();toast("Shadowing completed")
 };
 $("#reviewWord").onclick=()=>{state.reviewMode="word";state.reviewIndex=0;$("#reviewWord").classList.add("active");$("#reviewSentence").classList.remove("active");renderReview()};
 $("#reviewSentence").onclick=()=>{state.reviewMode="sentence";state.reviewIndex=0;$("#reviewSentence").classList.add("active");$("#reviewWord").classList.remove("active");renderReview()};
@@ -172,14 +172,14 @@ $("#spellCheck").onclick=()=>{
   if(!val){$("#spellFeedback").textContent="請先輸入拼字。";return}
   if(val===target.toLowerCase()){
     const s=getStore(),k=String(lesson().day);s.stats.spelling++;s.completed[k].spelling=true;setStore(s);
-    $("#spellFeedback").textContent=`✅ Correct — ${target}`;renderStats();updateProgress();
-  }else $("#spellFeedback").textContent="❌ Not yet. Listen again and try one more time.";
+    $("#spellFeedback").textContent=`Correct — ${target}`;renderStats();updateProgress();
+  }else $("#spellFeedback").textContent="Not yet. Listen again and try one more time.";
 };
 $("#spellNext").onclick=()=>{state.spellIndex=(state.spellIndex+1)%lesson().vocab.length;resetSpell();speak(lesson().vocab[state.spellIndex][0],.78)};
 $("#answerSave").onclick=()=>{
   const val=$("#answerInput").value.trim();
   if(!val){toast("請先寫 2–3 句英文");return}
-  const s=getStore(),k=String(lesson().day);s.answers[k]=val;s.stats.answers++;s.completed[k].answer=true;setStore(s);renderStats();updateProgress();toast("Answer saved ✓")
+  const s=getStore(),k=String(lesson().day);s.answers[k]=val;s.stats.answers++;s.completed[k].answer=true;setStore(s);renderStats();updateProgress();toast("Answer saved")
 };
 $("#modelShow").onclick=()=>$("#modelAnswer").classList.toggle("hidden");
 $("#modelPlay").onclick=()=>speak(lesson().model,.84);

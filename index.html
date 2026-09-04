@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#eaf4ff">
+<meta name="theme-color" content="#f3f1eb">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="ID English">
@@ -27,7 +27,7 @@
 
   <header class="topbar">
     <div>
-      <div class="eyebrow"><span class="appMark">ID</span> Interview English <span class="iosBadge">iOS 27</span></div>
+      <div class="eyebrow"><span class="appMark">ID</span> Interview English <span class="iosBadge">Daily practice</span></div>
       <h1 id="title">Loading…</h1>
       <div id="subtitle" class="muted"></div>
     </div>
@@ -40,22 +40,22 @@
   <div class="progressTrack"><div id="progressBar" class="progressBar"></div></div>
 
   <nav class="tabs">
-    <button class="tab active" data-tab="today"><span class="tabIcon">◉</span><span>Today</span></button>
-    <button class="tab" data-tab="review"><span class="tabIcon">↻</span><span>Review</span></button>
+    <button class="tab active" data-tab="today"><span class="tabIcon">TD</span><span>Today</span></button>
+    <button class="tab" data-tab="review"><span class="tabIcon">RV</span><span>Review</span></button>
     <button class="tab" data-tab="spell"><span class="tabIcon">Aa</span><span>Spell</span></button>
-    <button class="tab" data-tab="interview"><span class="tabIcon">◌</span><span>Interview</span></button>
-    <button class="tab" data-tab="history"><span class="tabIcon">▥</span><span>History</span></button>
+    <button class="tab" data-tab="interview"><span class="tabIcon">IN</span><span>Interview</span></button>
+    <button class="tab" data-tab="history"><span class="tabIcon">HS</span><span>History</span></button>
   </nav>
 
   <main>
     <section id="today" class="panel active">
       <section class="card">
-        <div class="sectionHead"><h2>📚 Vocabulary · 5</h2><span class="muted small">Listen → Read → ✓</span></div>
+        <div class="sectionHead"><h2>Vocabulary · 5</h2><span class="muted small">Listen → Read → Complete</span></div>
         <div id="vocabList"></div>
       </section>
 
       <section class="card">
-        <div class="sectionHead"><h2>💼 Interview Phrases · 3</h2><span class="muted small">Simple + professional</span></div>
+        <div class="sectionHead"><h2>Interview Phrases · 3</h2><span class="muted small">Simple + professional</span></div>
         <div id="phraseList"></div>
       </section>
 
@@ -64,9 +64,9 @@
         <h2>Today's key sentence</h2>
         <p id="shadowText" class="keySentence"></p>
         <div class="actions">
-          <button id="shadowPlay">🔊 Play</button>
-          <button id="shadowSlow">🐢 Slow</button>
-          <button id="shadowDone" class="primary">✓ Done</button>
+          <button id="shadowPlay">Play audio</button>
+          <button id="shadowSlow">Slow speed</button>
+          <button id="shadowDone" class="primary">Complete</button>
         </div>
       </section>
     </section>
@@ -80,14 +80,14 @@
         <div class="eyebrow">Quick Review</div>
         <div id="reviewFront" class="reviewFront"></div>
         <div class="actions">
-          <button id="reviewAudio">🔊 Listen</button>
+          <button id="reviewAudio">Listen</button>
           <button id="reviewReveal">Show answer</button>
         </div>
         <div id="reviewBack" class="answerBox hidden"></div>
         <div class="grid3">
           <button id="reviewAgain">Again</button>
           <button id="reviewHard">Hard</button>
-          <button id="reviewGood" class="primary">Got it ✓</button>
+          <button id="reviewGood" class="primary">Got it</button>
         </div>
       </section>
     </section>
@@ -97,7 +97,7 @@
         <div class="eyebrow">Spelling Practice</div>
         <h2>Listen and type the word</h2>
         <p class="muted">先聽發音，不看答案，輸入你聽到的拼字。</p>
-        <button id="spellPlay">🔊 Play word</button>
+        <button id="spellPlay">Play word</button>
         <label for="spellInput">Your spelling</label>
         <input id="spellInput" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Type the word">
         <div class="actions">
@@ -123,7 +123,7 @@
         <div class="actions">
           <button id="answerSave" class="primary">Save answer</button>
           <button id="modelShow">Show model</button>
-          <button id="modelPlay">🔊 Play model</button>
+          <button id="modelPlay">Play model</button>
         </div>
         <div id="modelAnswer" class="answerBox hidden"></div>
       </section>
@@ -131,7 +131,7 @@
 
     <section id="history" class="panel">
       <section class="card">
-        <div class="sectionHead"><h2>📈 Learning History</h2><button id="resetProgress" class="dangerGhost">Reset</button></div>
+        <div class="sectionHead"><h2>Learning History</h2><button id="resetProgress" class="dangerGhost">Reset</button></div>
         <div id="stats" class="stats"></div>
         <div class="divider"></div>
         <h3>Daily routine · 15–20 min</h3>
