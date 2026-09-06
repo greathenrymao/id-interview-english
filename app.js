@@ -13,17 +13,21 @@ function getStore(){
 }
 function setStore(obj){localStorage.setItem("idInterviewEnglishState",JSON.stringify(obj))}
 function todayKey(){return new Date().toISOString().slice(0,10)}
-function dateSeed(){
-  const start=new Date("2026-09-04T00:00:00");
-  const now=new Date();
-  return Math.max(0,Math.floor((now-start)/(86400000)));
-}
 function ensureStore(){
   const s=getStore();
+  if(s.curriculumVersion!=="90day-v1"){
+    s.curriculumVersion="90day-v1";
+    s.completed={};s.answers={};s.stats={reviews:0,spelling:0,answers:0};
+    s.courseStartedAt=todayKey();s.lessonIndex=0;
+  }
   if(!s.completed)s.completed={};
   if(!s.answers)s.answers={};
   if(!s.stats)s.stats={reviews:0,spelling:0,answers:0};
-  if(typeof s.lessonIndex!=="number")s.lessonIndex=dateSeed()%lessons.length;
+  if(!s.courseStartedAt)s.courseStartedAt=todayKey();
+  if(typeof s.lessonIndex!=="number"){
+    const start=new Date(`${s.courseStartedAt}T00:00:00`);
+    s.lessonIndex=Math.min(lessons.length-1,Math.max(0,Math.floor((new Date()-start)/86400000)));
+  }
   setStore(s);
   state.lessonIndex=Math.min(s.lessonIndex,lessons.length-1);
 }
@@ -55,6 +59,14 @@ function render(){
   const l=lesson(),d=dayData();
   $("#title").textContent=`Day ${l.day} · ${l.title}`;
   $("#subtitle").textContent=l.theme_zh+" · Simple professional English";
+  $("#phaseBadge").textContent=`Phase ${l.phase} · ${l.phase_zh}`;
+  $("#weekBadge").textContent=`Week ${l.week}`;
+  $("#levelBadge").textContent=l.level;
+  $("#answerGuide").textContent=l.phase===1
+    ? "先用 4 個簡單完整句回答；清楚比難字重要。"
+    : l.phase===2
+      ? "用 5 個句子說明目標、挑戰、做法與結果。"
+      : "用證據、取捨、成果與反思完成有說服力的回答。";
   $("#dayLabel").textContent=`Day ${l.day}`;
   $("#shadowText").textContent=l.shadow;
   $("#question").textContent=l.question;
@@ -100,12 +112,12 @@ function bindDynamic(){
   $$("[data-done-word]").forEach(b=>b.onclick=()=>{
     const s=getStore(),k=String(lesson().day),i=+b.dataset.doneWord,d=s.completed[k];
     d.words=d.words.includes(i)?d.words.filter(x=>x!==i):[...d.words,i];
-    setStore(s);b.classList.toggle("done");updateProgress();renderStats();
+    setStore(s);b.classList.toggle("done");b.textContent=b.classList.contains("done")?"Done":"Mark";updateProgress();renderStats();
   });
   $$("[data-done-phrase]").forEach(b=>b.onclick=()=>{
     const s=getStore(),k=String(lesson().day),i=+b.dataset.donePhrase,d=s.completed[k];
     d.phrases=d.phrases.includes(i)?d.phrases.filter(x=>x!==i):[...d.phrases,i];
-    setStore(s);b.classList.toggle("done");updateProgress();renderStats();
+    setStore(s);b.classList.toggle("done");b.textContent=b.classList.contains("done")?"Done":"Mark";updateProgress();renderStats();
   });
 }
 function renderReview(){
@@ -143,6 +155,24 @@ function renderStats(){
     <div class="stat"><div class="muted small">Phrases completed</div><div class="statValue">${phraseCount}</div></div>
     <div class="stat"><div class="muted small">Spelling correct</div><div class="statValue">${s.stats.spelling||0}</div></div>
     <div class="stat"><div class="muted small">Practice days</div><div class="statValue">${days}</div></div>`;
+  renderRoadmap(completed);
+}
+function renderRoadmap(completed){
+  const doneDays=completed.filter(d=>(d.words||[]).length+(d.phrases||[]).length+(d.shadow?1:0)+(d.spelling?1:0)+(d.review?1:0)+(d.answer?1:0)>0).length;
+  const phases=[
+    [1,30,"Foundation","國小程度 → 國中入門","簡單句、自我介紹與基本設計詞彙"],
+    [31,60,"Development","國中程度","原因、比較、協作、過程與結果"],
+    [61,90,"Interview Ready","國中進階 → 高中程度","證據、取捨、策略、領導與反思"]
+  ];
+  $("#roadmap").innerHTML=phases.map(([from,to,name,level,focus],i)=>{
+    const phaseDone=Math.max(0,Math.min(30,doneDays-i*30));
+    const current=state.lessonIndex+1>=from&&state.lessonIndex+1<=to;
+    return `<div class="roadmapItem ${current?"current":""}">
+      <div class="roadmapTop"><span class="roadmapNumber">0${i+1}</span><strong>${name}</strong><span>${from}–${to} days</span></div>
+      <div class="small muted">${level} · ${focus}</div>
+      <div class="miniTrack"><span style="width:${phaseDone/30*100}%"></span></div>
+    </div>`;
+  }).join("");
 }
 function activateTab(name){
   $$(".tab").forEach(x=>x.classList.toggle("active",x.dataset.tab===name));

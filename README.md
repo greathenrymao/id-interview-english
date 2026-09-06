@@ -14,7 +14,9 @@
 - LocalStorage 保存進度
 - History 學習統計
 - PWA 離線快取
-- Day 21–30 內建課程
+- 90 天、三階段內建課程
+- 難度由國小程度循序提升至高中程度
+- 30 個工業設計面試主題，以螺旋式課程重複深化
 
 ## 本機執行
 不要直接雙擊 index.html，請用 local server：
@@ -33,7 +35,7 @@ http://localhost:8000
 分享 → 加入主畫面
 
 ## 每日更新
-目前 App 會依日期自動選擇內建課程，也可用 Previous / Next 切換。
+App 會依開始學習日自動選擇 Day 1–90，也可用 Previous / Next 切換。
 若要真正每天由 AI 自動新增新課程，需要接後端（例如 Supabase/Firebase + OpenAI API）或由排程每天寫入 lessons.json。
 
 ## 建議下一階段

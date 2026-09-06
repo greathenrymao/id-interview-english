@@ -30,6 +30,7 @@
       <div class="eyebrow"><span class="appMark">ID</span> Interview English <span class="iosBadge">Daily practice</span></div>
       <h1 id="title">Loading…</h1>
       <div id="subtitle" class="muted"></div>
+      <div class="courseMeta"><span id="phaseBadge"></span><span id="weekBadge"></span><span id="levelBadge"></span></div>
     </div>
     <div class="progressBox">
       <div class="muted small">Daily</div>
@@ -113,7 +114,7 @@
       <section class="card">
         <div class="eyebrow">Design Review Interview</div>
         <h2 id="question"></h2>
-        <p class="muted">先用 3–5 個短句回答，不用追求難字。</p>
+        <p id="answerGuide" class="muted">先用短句回答，重點是清楚表達。</p>
         <div class="answerBox">
           <div class="small strong">Easy structure</div>
           <div id="structure" class="structure"></div>
@@ -133,6 +134,9 @@
       <section class="card">
         <div class="sectionHead"><h2>Learning History</h2><button id="resetProgress" class="dangerGhost">Reset</button></div>
         <div id="stats" class="stats"></div>
+        <div class="divider"></div>
+        <h3>90-day learning path</h3>
+        <div id="roadmap" class="roadmap"></div>
         <div class="divider"></div>
         <h3>Daily routine · 15–20 min</h3>
         <ol class="routine">
