@@ -218,7 +218,7 @@ $("#prevDay").onclick=()=>{state.lessonIndex=(state.lessonIndex-1+lessons.length
 $("#resetProgress").onclick=()=>{if(confirm("確定要清除所有學習紀錄嗎？")){localStorage.removeItem("idInterviewEnglishState");ensureStore();render();toast("Progress reset")}};
 fetch("data/lessons.json").then(r=>r.json()).then(data=>{
   lessons=data;ensureStore();render();
-  if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js").catch(()=>{});
+  if("serviceWorker" in navigator)navigator.serviceWorker.register("service-worker.js",{updateViaCache:"none"}).then(reg=>reg.update()).catch(()=>{});
 }).catch(()=>{$("#title").textContent="Unable to load lesson data";$("#subtitle").textContent="Please open the app through a local or web server.";});
 
 
