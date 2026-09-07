@@ -1,0 +1,25 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import vm from 'node:vm';
+import {topics,commonGlossary,extraGlossary,phraseTranslations} from './interview-content.js';
+const listeners={},elements=new Map();
+const element=id=>{if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',value:'',dataset:{},classList:{remove(){},add(){}},setAttribute(){},removeAttribute(){},showModal(){},close(){}});return elements.get(id)};
+const data=new Map([['idInterviewEnglishState',JSON.stringify({day:22,bookmarks:['legacy']})]]);
+const ctx=vm.createContext({topics,commonGlossary,extraGlossary,phraseTranslations,console,Date,URL,Blob,Set,localStorage:{getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)},document:{querySelector:element,querySelectorAll:()=>[],addEventListener:(k,f)=>listeners[k]=f},window:{addEventListener(){},scrollTo(){}},navigator:{onLine:true},setTimeout:()=>0,clearTimeout(){}});
+vm.runInContext(fs.readFileSync(new URL('./studio.js',import.meta.url),'utf8').replace(/^import[^\n]+\n/,''),ctx);
+const run=s=>vm.runInContext(s,ctx);
+assert.equal(topics.length,14);assert.equal(run('allCards().length'),252);
+for(const t of topics){assert.equal(t.vocab.length,5);assert.equal(phraseTranslations[t.id].length,3);assert.equal(run(`cards(topics.find(t=>t.id==='${t.id}')).length`),13);}
+const dict={...commonGlossary,...extraGlossary};for(const t of topics)for(const v of t.vocab)dict[v[0]]=v[1];
+const missing=new Set();for(const t of topics)for(const s of [t.q,t.basic,t.advanced,t.follow,t.reply,...t.vocab.flatMap(v=>[v[0],v[2]])])for(const w of s.toLowerCase().match(/[a-z]+(?:[-'][a-z]+)*/g)||[])if(!dict[w]&&![w.replace(/s$/,''),w.replace(/ies$/,'y'),w.replace(/ed$/,''),w.replace(/d$/,''),w.replace(/ing$/,''),w.replace(/ing$/,'e')].some(x=>dict[x]))missing.add(w);
+assert.deepEqual([...missing],[],'All authored dialogue words have Chinese lookup');
+run("bookmark('intro:word:0');store.day=1;reviewSource='saved'");assert.equal(run('reviewPool().length'),1);assert.equal(run('reviewPool()[0].en'),'designer');
+run("reviewSource='due';session={queue:reviewPool(),unique:['intro:word:0'],index:0,revealed:true};rate('good')");assert.equal(run('reviewPool().length'),0);assert.equal(run("store.srs['intro:word:0'].level"),1);assert.equal(run('Object.keys(store.bookmarks).length'),1);
+run("reviewSource='today';session={queue:reviewPool(),unique:reviewPool().map(c=>c.id),index:0,revealed:true};rate('again')");assert.equal(run('session.queue.length'),14);assert.equal(run('session.queue[3].id'),run('session.queue[0].id'));
+run("session.revealed=true;rate('hard')");assert.equal(run('store.srs[session.queue[1].id].level'),0);
+run("store.day=0;store.practice[dayKey('intro:word:0')]=1;store.day=14");assert.equal(run("store.practice[dayKey('intro:word:0')]"),undefined);
+assert.deepEqual(JSON.parse(data.get('idInterviewEnglishState')),{day:22,bookmarks:['legacy']});
+const backup=JSON.parse(data.get('idEnglishStudio.v1'));backup.answers.intro='Imported answer';
+await run(`importData({size:100,text:async()=>${JSON.stringify(JSON.stringify({app:'id-interview-studio',version:1,data:backup}))}})`);assert.equal(run('store.answers.intro'),'Imported answer');
+run("store.answers.intro='Local answer'");await run(`importData({size:100,text:async()=>${JSON.stringify(JSON.stringify({app:'id-interview-studio',version:1,data:backup}))}})`);assert.equal(run('store.answers.intro'),'Local answer');
+console.log('PASS: 14 topics, 182 daily units, 252 total cards, full word lookup, bookmark persistence, SRS, repeated-day practice, backup merge and legacy preservation.');

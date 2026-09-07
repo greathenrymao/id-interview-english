@@ -1,47 +1,29 @@
-# Industrial Design Interview English App
+# ID English · Interview Studio v7
 
-這是一個可安裝成手機 App 的 PWA 原型。
+Industrial / physical product design interview preparation PWA on GitHub Pages.
 
-## 功能
-- 每日工業設計面試英文
-- 5 個單字 + 中文 + 例句
-- 單字發音 / 例句發音（瀏覽器 Speech Synthesis）
-- 3 個專業面試片語
-- 單字複習 / 句子複習
-- 拼字練習
-- Shadowing 跟讀
-- 面試回答輸入與 Model Answer
-- LocalStorage 保存進度
-- History 學習統計
-- PWA 離線快取
-- 90 天、三階段內建課程
-- 難度由國小程度循序提升至高中程度
-- 30 個工業設計面試主題，以螺旋式課程重複深化
+## Five sections
 
-## 本機執行
-不要直接雙擊 index.html，請用 local server：
+- Today: 5 words, 5 examples, 3 answer sentences; audio, Chinese word lookup, bookmarks and per-day reading progress.
+- Interview: 14 authored classic topics, basic/advanced illustrative answers, follow-ups, coaching and saved personal answers.
+- Review: all 13 Today items, cross-day saved snapshots, or due bookmarks. Again repeats within the session; Hard tomorrow; Good in 3/7/14/30 days.
+- Practice: all 5/5/3 daily units as dictation, local microphone recording and speaking self-checks. No automatic pronunciation score. Recordings are temporary unless downloaded.
+- My Plan: 14/30/90-day routes, interview date, day selection, progress, JSON backup export/merge import.
 
-### Python
-python3 -m http.server 8000
+The curriculum contains **14 core topics repeated over the selected route**, not 90 distinct new lessons. First round: understanding and shadowing; second: off-script answers; subsequent rounds: advanced answers and follow-ups. Legacy data/lessons.json, app.js and other prior assets remain in the repository; the new interface uses interview-content.js.
 
-然後瀏覽：
-http://localhost:8000
+## Storage and offline behavior
 
-### VS Code
-使用 Live Server 開啟此資料夾。
+idEnglishStudio.v1 stores learning records on this device/browser. Bookmarks contain content snapshots and are available immediately without deployment. The old idInterviewEnglishState is never reset or overwritten; exports include it. Legacy records are retained as backup, not mapped onto the rewritten curriculum.
 
-## iPhone 安裝
-部署到 Vercel / Netlify / GitHub Pages 後，用 Safari 打開網址：
-分享 → 加入主畫面
+Import validates and merges missing keys, preserving existing local records. Route/day/date preferences remain local. No login or automatic cross-device sync. Clearing site data can delete records: export backups regularly. Private browsing storage may be temporary. Exported files contain personal answers.
 
-## 每日更新
-App 會依開始學習日自動選擇 Day 1–90，也可用 Previous / Next 切換。
-若要真正每天由 AI 自動新增新課程，需要接後端（例如 Supabase/Firebase + OpenAI API）或由排程每天寫入 lessons.json。
+The service worker caches the app after an online visit, checks the network for updates, and falls back to the cache offline. Speech depends on installed device voices. Recording requires HTTPS (or localhost), browser support and permission. No audio or answers are uploaded.
 
-## 建議下一階段
-1. Supabase 登入與跨裝置同步
-2. AI 自動批改面試回答
-3. 麥克風錄音 + 發音評分
-4. SRS 間隔重複
-5. 每天自動生成新課程
-6. 作品集面試題庫
+## Run and verify
+
+Serve this folder with python -m http.server 8030 and visit localhost:8030. Do not open index.html as a file.
+
+Run node test-studio.mjs for card counts, glossary coverage, bookmarking, review scheduling, per-day practice and backup merge tests. Browser-test mobile layout before deployment. Check real speech and recording on the target phone.
+
+Deploy index.html, studio.css, studio.js, interview-content.js and service-worker.js together. No API keys or build step. Safari: Share → Add to Home Screen.
