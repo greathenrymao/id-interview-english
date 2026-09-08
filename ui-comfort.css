@@ -1,6 +1,13 @@
 /* HIG-inspired web adaptation: glyph size differs from hit-target size.
    44 CSS px at default scale is a web implementation choice, not native pt. */
 /* Dictionary modal has its own action group, separate from lesson .tools. */
+.review-modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 24px}
+.review-modes button{display:flex;flex-direction:column;align-items:flex-start;text-align:left;gap:8px;padding:18px;min-width:0}
+.review-modes strong{font-size:1.125rem}.review-modes button>span:last-child{font-size:.9375rem;line-height:1.6}
+.review-modes .selected{border:2px solid var(--accent)}
+.cloze-blank{color:var(--accent);white-space:nowrap}
+#reviewAnswer{width:100%;min-height:48px;font-size:1.125rem;margin:8px 0 16px}
+@media(max-width:600px){.review-modes{grid-template-columns:1fr;gap:10px}.review-modes button{padding:16px}.review-modes .eyebrow{display:none}}
 #wordTitle{overflow-wrap:anywhere}#wordTitle:focus{outline:none}
 .word-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:12px;margin:20px 0}
 .word-actions .icon{align-self:center}
