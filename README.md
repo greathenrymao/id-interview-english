@@ -1,4 +1,12 @@
-# ID English · Interview Studio v7
+# ID English · Interview Studio v8
+
+## Learning Journey (My Plan)
+
+Activity-based calendar, active-day counts, daily reading/review/dictation totals, first-attempt dictation accuracy and retries, latest review self-ratings, topic preparation and actionable practice suggestions. Reading is deduplicated per actual date/course day/card; navigating days does not create activity. Empty answers are excluded. A course-day/card's first recorded dictation attempt remains its first result even after restarting practice.
+
+Detailed history starts when v8 is first opened. Earlier completions remain available but are not assigned invented activity dates. New history is stored in the existing local record, exported with backups and merged by unique event ID to avoid double counting. Older v7 backups still import without erasing history. No automatic cross-device sync. Follow-up practice is explicitly recorded separately from confidence self-checks; microphone audio is never stored in history.
+
+Deploy learning-history.js together with index.html, studio.js, studio.css and service-worker.js. All v8 module URLs must remain available for offline caching.
 
 Industrial / physical product design interview preparation PWA on GitHub Pages.
 

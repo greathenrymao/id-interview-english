@@ -1,5 +1,5 @@
-const CACHE='id-interview-english-studio-v7';
-const ASSETS=['./index.html','./studio.css?v=7','./studio.js?v=7','./interview-content.js?v=7','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];
+const CACHE='id-interview-english-studio-v8.1';
+const ASSETS=['./index.html','./learning-history.js?v=8','./studio.css?v=8','./studio.js?v=8.1','./interview-content.js?v=8','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('id-interview-english-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin)return;
