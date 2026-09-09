@@ -9,6 +9,9 @@
 #reviewAnswer{width:100%;min-height:48px;font-size:1.125rem;margin:8px 0 16px}
 @media(max-width:600px){.review-modes{grid-template-columns:1fr;gap:10px}.review-modes button{padding:16px}.review-modes .eyebrow{display:none}}
 #wordTitle{overflow-wrap:anywhere}#wordTitle:focus{outline:none}
+.word-forms{font-size:.9375rem;line-height:1.7;overflow-wrap:anywhere;white-space:pre-line}
+#wordDialog{max-height:calc(100dvh - 32px);overflow-y:auto}
+.word-context .icon{margin-top:12px}
 .word-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:12px;margin:20px 0}
 .word-actions .icon{align-self:center}
 .word-context .context-en{font-size:1.125rem;font-weight:600;line-height:1.55;margin:10px 0 6px;overflow-wrap:anywhere}
