@@ -14,6 +14,8 @@
 .word-context .icon{margin-top:12px}
 .word-actions{display:flex;align-items:stretch;flex-wrap:wrap;gap:12px;margin:20px 0}
 .word-actions .icon{align-self:center}
+.word-save[aria-pressed="true"]{color:var(--accent);border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,transparent)}
+.word-save[aria-pressed="true"] svg,.tools button[aria-pressed="true"] svg{fill:currentColor}
 .word-context .context-en{font-size:1.125rem;font-weight:600;line-height:1.55;margin:10px 0 6px;overflow-wrap:anywhere}
 .word-context .context-zh{font-size:.9375rem;line-height:1.6;color:var(--muted);margin:0}
 .word-save{display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:1 1 160px;padding:10px 14px;min-width:0}

@@ -1,5 +1,5 @@
-const CACHE='id-interview-english-studio-v11';
-const ASSETS=['./word-guide.js?v=11','./index.html','./ui-comfort.css?v=11','./learning-history.js?v=9','./studio.css?v=8','./studio.js?v=11','./interview-content.js?v=8','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];
+const CACHE='id-interview-english-studio-v12';
+const ASSETS=['./word-guide.js?v=11','./index.html','./ui-comfort.css?v=12','./learning-history.js?v=9','./studio.css?v=8','./studio.js?v=12','./interview-content.js?v=8','./manifest.webmanifest','./icon-180.png','./icon-192.png','./icon-512.png'];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)).then(()=>self.skipWaiting())));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('id-interview-english-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{const u=new URL(e.request.url);if(e.request.method!=='GET'||u.origin!==self.location.origin)return;
