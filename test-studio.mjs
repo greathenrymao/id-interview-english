@@ -1,3 +1,4 @@
+import {henryTopics,henryPhrases,henryGlossary} from './henry-interview-content.js';
 import {wordGuide} from './word-guide.js';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -8,10 +9,11 @@ import {topics,commonGlossary,extraGlossary,phraseTranslations} from './intervie
 const listeners={},elements=new Map();
 const element=id=>{if(!elements.has(id))elements.set(id,{innerHTML:'',textContent:'',value:'',dataset:{},classList:{remove(){},add(){}},setAttribute(){},removeAttribute(){},showModal(){},close(){},focus(){}});return elements.get(id)};
 const data=new Map([['idInterviewEnglishState',JSON.stringify({day:22,bookmarks:['legacy']})]]);
-const ctx=vm.createContext({wordGuide,crypto,localDay,validDay,validHistory,historyView,topics,commonGlossary,extraGlossary,phraseTranslations,console,Date,URL,Blob,Set,localStorage:{getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)},document:{querySelector:element,querySelectorAll:()=>[],addEventListener:(k,f)=>listeners[k]=f},window:{addEventListener(){},scrollTo(){}},navigator:{onLine:true},setTimeout:()=>0,clearTimeout(){}});
+const ctx=vm.createContext({wordGuide,crypto,localDay,validDay,validHistory,historyView,legacyTopics:topics,henryTopics,henryPhrases,henryGlossary,commonGlossary,extraGlossary,legacyPhrases:phraseTranslations,console,Date,URL,Blob,Set,localStorage:{getItem:k=>data.get(k)||null,setItem:(k,v)=>data.set(k,v)},document:{querySelector:element,querySelectorAll:()=>[],addEventListener:(k,f)=>listeners[k]=f},window:{addEventListener(){},scrollTo(){}},navigator:{onLine:true},setTimeout:()=>0,clearTimeout(){}});
 vm.runInContext(fs.readFileSync(new URL('./studio.js',import.meta.url),'utf8').replace(/^import[^\n]+\n/gm,''),ctx);
 const run=s=>vm.runInContext(s,ctx);
-assert.equal(topics.length,14);assert.equal(run('allCards().length'),252);
+assert.equal(run("topics.length"),30);assert.equal(run("store.route"),30);run("switchCourse('general')");
+assert.equal(topics.length,14);assert.equal(run('allCards().length'),792);
 for(const t of topics){assert.equal(t.vocab.length,5);assert.equal(phraseTranslations[t.id].length,3);assert.equal(run(`cards(topics.find(t=>t.id==='${t.id}')).length`),13);}
 const dict={...commonGlossary,...extraGlossary};for(const t of topics)for(const v of t.vocab)dict[v[0]]=v[1];
 const missing=new Set();for(const t of topics)for(const s of [t.q,t.basic,t.advanced,t.follow,t.reply,...t.vocab.flatMap(v=>[v[0],v[2]])])for(const w of s.toLowerCase().match(/[a-z]+(?:[-'][a-z]+)*/g)||[])if(!dict[w]&&![w.replace(/s$/,''),w.replace(/ies$/,'y'),w.replace(/ed$/,''),w.replace(/d$/,''),w.replace(/ing$/,''),w.replace(/ing$/,'e')].some(x=>dict[x]))missing.add(w);
@@ -134,3 +136,35 @@ assert.equal(run('reviewPool().length'),3,'Old duplicate snapshots appear once i
 run("bookmark('intro:word:0');lookup('designer','','')");
 assert.ok(!element('#wordBody').innerHTML.includes('<span>已收藏</span>'),'Unsave restores state');
 console.log('PASS: shared saved state, inflection deduplication, idempotent saves and legacy review deduplication.');
+
+// New curriculum must preserve the original draft and remain usable offline.
+assert.equal(henryTopics.length,30);
+const source=fs.readFileSync(new URL('./interview-practice-source.md',import.meta.url),'utf8');
+const answers=[...source.matchAll(/\*\*英文回答\*\*\s+([\s\S]*?)\s+\*\*練習提示/g)].map(m=>m[1]);
+const fullDict={...dict,...henryGlossary};
+const missingHenry=new Set();
+for(const [i,t] of henryTopics.entries()){
+ assert.equal(t.advanced,answers[i]);
+ assert.equal(t.vocab.length,5);assert.equal(henryPhrases[t.id].length,3);
+ assert.equal(run(`phrases(catalog.find(t=>t.id==='${t.id}')).length`),3);
+ for(const key of ['q','qzh','basic','basiczh','advanced','advancedzh','follow','followzh','reply','replyzh','coach'])assert.ok(t[key].length>0,`${t.id}:${key}`);
+ for(const s of [t.q,t.basic,t.advanced,t.follow,t.reply,...t.vocab.flatMap(v=>[v[0],v[2]])])for(const w of s.toLowerCase().match(/[a-z]+(?:[-'][a-z]+)*/g)||[])if(!fullDict[w]&&![w.replace(/s$/,''),w.replace(/ies$/,'y'),w.replace(/ed$/,''),w.replace(/d$/,''),w.replace(/ing$/,''),w.replace(/ing$/,'e')].some(x=>fullDict[x]))missingHenry.add(w);
+}
+assert.deepEqual([...missingHenry],[],'New dialogue words have offline Chinese lookup');
+run("store.day=13;store.route=30;store.answers.intro='Keep my old answer';store.practice['day0:intro:word:0']=123;switchCourse('henry');store.day=29;topicId=current().id;save()");
+assert.equal(run('current().id'),'henry30');
+assert.ok(run('plan()').includes('Day 30 · 30 · 反問主管'));
+assert.ok(run('history()').includes('30 個主題準備狀況'));
+assert.equal(run('store.answers.intro'),'Keep my old answer');
+assert.equal(run("store.practice['day0:intro:word:0']"),123);
+run("switchCourse('general')");assert.equal(run('store.day'),13);assert.equal(run('store.route'),30);
+run("switchCourse('henry')");assert.equal(run('store.day'),29);
+await click({historyPractice:'intro:word:0',courseDay:'0'});
+assert.equal(run('store.course'),'general');assert.equal(run('current().id'),'intro');
+await click({openTopic:'henry09'});await click({action:'goSpeaking'});
+assert.equal(run('getTopic().id'),'henry09');assert.ok(run('speaking()').includes('ASUS fragrance mouse'));
+for(const course of ['henry','general']){
+ run(`switchCourse('${course}');store.route=90`);
+ for(let day=0;day<90;day++)run(`store.day=${day};topicId=current().id;today();plan();interview();practice()`);
+}
+console.log('PASS: 30 resume answers match source, Chinese lookup, 792 cards, separate course days, old answers, cross-course history retries, selected speaking topic, and every day in both 90-day routes.');
